@@ -6,7 +6,4 @@ public class SrpService {
 
     }
 
-    public void createChampion(String userId, int championId) {
-
-    }
 }
