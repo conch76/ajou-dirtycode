@@ -6,10 +6,6 @@ public class SrpService {
 
     }
 
-    public void createUser(String userId, String password) {
-
-    }
-
     public void purchaseRp(int amount) {
 
     }
