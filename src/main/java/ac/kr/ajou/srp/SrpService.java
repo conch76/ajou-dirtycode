@@ -6,10 +6,6 @@ public class SrpService {
 
     }
 
-    public void purchaseRp(int amount) {
-
-    }
-
     public void createChampion(String userId, int championId) {
 
     }
