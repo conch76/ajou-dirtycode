@@ -10,27 +10,10 @@ class DirtySample {
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             if (Items_ExceptFor_AgedBrie_And_BackstagePasses(items[i])) {
-                if (items[i].name != "Sulfuras, Hand of Ragnaros") {
-                    items[i].quality = items[i].quality - 1;
-                }
-            } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
-
-                    if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
-
-                        if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
-                    }
-                }
+                Handle_item_ExceptFor_Sulfuras(items[i]);
+            }
+            else {
+                Handle_Items_AgedBrie_And_BackstagePasses(items[i]);
             }
 
             Handle_item_ExceptFor_Sulfuras(items[i]);
@@ -38,6 +21,26 @@ class DirtySample {
             if (items[i].sellIn < 0) {
                 Handle_item_Sell_In_is_insufficent(items[i]);
             }
+        }
+    }
+
+    private void Handle_Items_AgedBrie_And_BackstagePasses(Item item) {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
+
+            if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                Handle_Items_By_Sell_In_And_Quality(item);
+            }
+        }
+    }
+
+    private void Handle_Items_By_Sell_In_And_Quality(Item item) {
+        if (item.sellIn < 11 && item.quality < 50) {
+                item.quality = item.quality + 1;
+        }
+
+        if (item.sellIn < 6 && item.quality < 50) {
+                item.quality = item.quality + 1;
         }
     }
 
