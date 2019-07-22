@@ -1,9 +1,9 @@
 package ac.kr.ajou.dirt;
 
-class DirtySample {
+class ManageItem {
     Item[] items;
 
-    public DirtySample(Item[] items) {
+    public ManageItem(Item[] items) {
         this.items = items;
     }
 
