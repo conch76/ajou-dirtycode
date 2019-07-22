@@ -40,4 +40,14 @@ public class DirtySampleTest {
         assertThat(items[0].quality, is(5));
     }
 
+    //4
+    @Test
+    public void updateQuality_item의_name이_Backstage이고_sellIn이_6미만이고_quality가_50미만이면_quality_3_증가() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 3) };
+        DirtySample dirtySample = new DirtySample(items);
+        dirtySample.updateQuality();
+
+        assertThat(items[0].quality, is(6));
+    }
+
 }
