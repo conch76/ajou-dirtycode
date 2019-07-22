@@ -16,6 +16,9 @@ class DirtySample {
 
             if (item.name.equals("Aged Brie")) {
                 increaseOneItemQuality(item);
+                if (item.sellIn < 0) {
+                    increaseOneItemQuality(item);
+                }
             } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 increaseOneItemQuality(item);
                 if (item.sellIn < 11) {
@@ -25,34 +28,20 @@ class DirtySample {
                 if (item.sellIn < 6) {
                     increaseOneItemQuality(item);
                 }
-            } else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-
-            } else {
-                decreaseOneItemQuality(item);
-            }
-
-
-            if (item.name.equals("Aged Brie")) {
-                if (item.sellIn < 0) {
-                    increaseOneItemQuality(item);
-                }
-            } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (item.sellIn < 0) {
                     item.quality = 0;
                 }
             } else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+
             } else {
+                decreaseOneItemQuality(item);
                 if (item.sellIn < 0) {
                     decreaseOneItemQuality(item);
 
                 }
             }
         }
-
     }
-
-
-
 
     private void increaseOneItemQuality(Item item) {
         if (item.quality < 50) {
