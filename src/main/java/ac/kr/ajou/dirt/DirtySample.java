@@ -9,14 +9,19 @@ class DirtySample {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (!item.name.equals("Aged Brie")
-                    && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            // invert 1
+            if (item.name.equals("Aged Brie")
+                    || item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (item.quality > 0) {
-                    if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                    // invert 2
+                    if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
                         decreaseItemQuality(item);
                     }
+                    // invert 2 end
                 }
-            } else {
+            }
+            // invert 1 end
+            else {
                 if (item.quality < 50) {
                     increaseItemQuality(item);
 
@@ -36,22 +41,29 @@ class DirtySample {
                 }
             }
 
-            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            // invert 3
+            if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
                 item.sellIn = item.sellIn - 1;
             }
-
+            // invert 3 end
             if (item.sellIn < 0) {
-                if (!item.name.equals("Aged Brie")) {
-                    if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                // invert 4
+                if (item.name.equals("Aged Brie")) {
+                    // invert 5
+                    if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.quality > 0) {
                             if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
                                 decreaseItemQuality(item);
                             }
                         }
-                    } else {
+                    }
+                    // invert 5 end
+                    else {
                         item.quality = item.quality - item.quality;
                     }
-                } else {
+                }
+                // invert 4 end
+                else {
                     if (item.quality < 50) {
                         increaseItemQuality(item);
                     }
