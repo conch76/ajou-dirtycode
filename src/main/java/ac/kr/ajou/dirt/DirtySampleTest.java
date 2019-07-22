@@ -24,4 +24,14 @@ public class DirtySampleTest {
 
         assertThat(items[0].quality, is(1));
     }
+    @Test
+    public void updateQuality_item의_sellIn이_0미만이고_name이_Aged가_아니고_Backstage이면_quality_0 () {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", -2, 3) };
+        DirtySample dirtySample = new DirtySample(items);
+        dirtySample.updateQuality();
+
+        assertThat(items[0].quality, is(0));
+    }
+
+
 }
