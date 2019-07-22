@@ -13,7 +13,7 @@ class DirtySample {
                     && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (item.quality > 0) {
                     if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                        item.quality = item.quality - 1;
+                        decreaseItemQuality(item);
                     }
                 }
             } else {
@@ -45,7 +45,7 @@ class DirtySample {
                     if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.quality > 0) {
                             if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                                item.quality = item.quality - 1;
+                                decreaseItemQuality(item);
                             }
                         }
                     } else {
@@ -58,5 +58,9 @@ class DirtySample {
                 }
             }
         }
+    }
+
+    private void decreaseItemQuality(Item item) {
+        item.quality -= 1;
     }
 }
