@@ -1,9 +1,13 @@
 # ajou-dirtycode
 ## Dirty code for refactoring 과정
 이 코드는 크게 세 부분으로 나뉜다. 
+
             if (!items[i].name.equals("Aged Brie") ...
+	    
             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) { ...         
+	    
 	    if (items[i].sellIn < 0) { ...
+
 첫번째 부분과 세번째 부분이 비슷한 부분이 많아 합쳐본다.
 
 ### 첫번째 부분
