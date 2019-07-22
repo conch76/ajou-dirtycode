@@ -18,18 +18,18 @@ class DirtySample {
                 }
             } else {
                 if (item.quality < 50) {
-                    item.quality = item.quality + 1;
+                    increaseItemQuality(item);
 
                     if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.sellIn < 11) {
                             if (item.quality < 50) {
-                                item.quality = item.quality + 1;
+                                increaseItemQuality(item);
                             }
                         }
 
                         if (item.sellIn < 6) {
                             if (item.quality < 50) {
-                                item.quality = item.quality + 1;
+                                increaseItemQuality(item);
                             }
                         }
                     }
@@ -53,11 +53,15 @@ class DirtySample {
                     }
                 } else {
                     if (item.quality < 50) {
-                        item.quality = item.quality + 1;
+                        increaseItemQuality(item);
                     }
                 }
             }
         }
+    }
+
+    private void increaseItemQuality(Item item) {
+        item.quality += 1;
     }
 
     private void decreaseItemQuality(Item item) {
