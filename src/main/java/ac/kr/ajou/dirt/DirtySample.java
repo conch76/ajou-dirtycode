@@ -11,48 +11,34 @@ class DirtySample {
         for (Item item : items) {
             // invert 1
             if (item.name.equals("Aged Brie")) {
-                if (item.quality < 50) {
-                    increaseItemQuality(item);
-                }
-                if (item.quality > 0) {
-                    // invert 2
+                increaseOneItemQuality(item);
+                // invert 2
                     if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                        decreaseItemQuality(item);
+                        decreaseOneItemQuality(item);
                     }
                     // invert 2 end
-                }
             }
             else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (item.quality < 50) {
-                    increaseItemQuality(item);
-                }
+                increaseOneItemQuality(item);
                 if (item.sellIn < 11) {
-                    if (item.quality < 50) {
-                        increaseItemQuality(item);
-                    }
+                    increaseOneItemQuality(item);
                 }
 
                 if (item.sellIn < 6) {
-                    if (item.quality < 50) {
-                        increaseItemQuality(item);
-                    }
+                    increaseOneItemQuality(item);
                 }
-                if (item.quality > 0) {
                     // invert 2
                     if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                        decreaseItemQuality(item);
+                        decreaseOneItemQuality(item);
                     }
                     // invert 2 end
-                }
             }
             else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
 
             }
             // invert 1 end
             else {
-                if (item.quality > 0) {
-                    decreaseItemQuality(item);
-                }
+                decreaseOneItemQuality(item);
             }
 
             // invert 3
@@ -65,10 +51,9 @@ class DirtySample {
                 if (item.name.equals("Aged Brie")) {
                     // invert 5
                     if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (item.quality > 0) {
                             // invert 6
                             if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                                decreaseItemQuality(item);
+                                decreaseOneItemQuality(item);
                             }
                             // invert 6 end
                         }
@@ -80,19 +65,20 @@ class DirtySample {
                 }
                 // invert 4 end
                 else {
-                    if (item.quality < 50) {
-                        increaseItemQuality(item);
-                    }
-                }
+                increaseOneItemQuality(item);
             }
+            }
+        }
+
+    private void increaseOneItemQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality += 1;
         }
     }
 
-    private void increaseItemQuality(Item item) {
-        item.quality += 1;
-    }
-
-    private void decreaseItemQuality(Item item) {
-        item.quality -= 1;
+    private void decreaseOneItemQuality(Item item) {
+        if (item.quality > 0) {
+            item.quality -= 1;
+        }
     }
 }
