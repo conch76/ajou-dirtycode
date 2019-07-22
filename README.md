@@ -1,2 +1,13 @@
-# ajou-dirtycode
-Dirty code for refactoring
+# Refactoring
+## ajou-dirtycode
+- [ ] SRP
+- [ ] Method는 20라인 보다 간결하게
+- [ ] 중복 코드가 있는지 확인
+- [ ] 코드의 길이를 줄이자
+- [ ] 변수명, 메소드명은 길어도 바로 이해 가능하게
+- [ ] 불필요 if else 제거
+- [ ] Conditional 블록은 method로 extract
+- [ ] 코멘트를 달아야 할 코드를 만들지 않기
+- [ ] 디자인패턴은 꼭 필요 시만 적용
+- [ ] 인터페이스는 구현체가 여러 개 필요 시 
+- [ ] 1개월 후 내가 봐도 이해할 수 있게 작성
