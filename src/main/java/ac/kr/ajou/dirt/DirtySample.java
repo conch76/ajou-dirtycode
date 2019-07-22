@@ -9,6 +9,11 @@ class DirtySample {
 
     public void updateQuality() {
         for (Item item : items) {
+
+            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                item.sellIn -= 1;
+            }
+
             if (item.name.equals("Aged Brie")) {
                 increaseOneItemQuality(item);
             } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
@@ -26,9 +31,6 @@ class DirtySample {
                 decreaseOneItemQuality(item);
             }
 
-            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                item.sellIn = item.sellIn - 1;
-            }
 
             if (item.name.equals("Aged Brie")) {
                 if (item.sellIn < 0) {
