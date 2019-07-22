@@ -11,8 +11,7 @@ class DirtySample {
         for (Item item : items) {
             if (item.name.equals("Aged Brie")) {
                 increaseOneItemQuality(item);
-            }
-            else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 increaseOneItemQuality(item);
                 if (item.sellIn < 11) {
                     increaseOneItemQuality(item);
@@ -21,39 +20,32 @@ class DirtySample {
                 if (item.sellIn < 6) {
                     increaseOneItemQuality(item);
                 }
-            }
-            else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            } else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
 
-            }
-            else {
+            } else {
                 decreaseOneItemQuality(item);
             }
 
-            // invert 3
-            if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
                 item.sellIn = item.sellIn - 1;
             }
-            // invert 3 end
+
             if (item.sellIn < 0) {
-                // invert 4
-                if (item.name.equals("Aged Brie")) {
-                    // invert 5
-                    if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                            // invert 6
-                            if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                                decreaseOneItemQuality(item);
+                if (!item.name.equals("Aged Brie")) {
+                    if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                        if (item.quality > 0) {
+                            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                                item.quality = item.quality - 1;
                             }
-                            // invert 6 end
                         }
-                    }
-                    // invert 5 end
-                    else {
+                    } else {
                         item.quality = item.quality - item.quality;
                     }
+                } else {
+                    if (item.quality < 50) {
+                        item.quality = item.quality + 1;
+                    }
                 }
-                // invert 4 end
-                else {
-                increaseOneItemQuality(item);
             }
         }
     }
