@@ -11,6 +11,9 @@ class DirtySample {
         for (Item item : items) {
             // invert 1
             if (item.name.equals("Aged Brie")) {
+                if (item.quality < 50) {
+                    increaseItemQuality(item);
+                }
                 if (item.quality > 0) {
                     // invert 2
                     if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
@@ -20,6 +23,9 @@ class DirtySample {
                 }
             }
             else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                if (item.quality < 50) {
+                    increaseItemQuality(item);
+                }
                 if (item.sellIn < 11) {
                     if (item.quality < 50) {
                         increaseItemQuality(item);
@@ -41,9 +47,7 @@ class DirtySample {
             }
             // invert 1 end
             else {
-                if (item.quality < 50) {
-                    increaseItemQuality(item);
-                }
+
             }
 
             // invert 3
