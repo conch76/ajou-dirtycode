@@ -45,9 +45,14 @@ class DirtySample {
                     // invert 2 end
                 }
             }
+            else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+
+            }
             // invert 1 end
             else {
-
+                if (item.quality > 0) {
+                    decreaseItemQuality(item);
+                }
             }
 
             // invert 3
