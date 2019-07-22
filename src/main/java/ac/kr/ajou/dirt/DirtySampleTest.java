@@ -18,4 +18,16 @@ public class DirtySampleTest {
         assertThat(items[0].quality, is(1));
     }
 
+    //2
+    @Test
+    public void updateQuality_item의_name이_Aged이고_quality가_50미만이면_quality_1_증가() {
+        Item[] items = new Item[] { new Item("Aged Brie", 2, 2), new Item("Aged Brie", 2, 3) };
+        DirtySample dirtySample = new DirtySample(items);
+        dirtySample.updateQuality();
+
+        assertThat(items[0].quality, is(3));
+        assertThat(items[1].quality, is(4));
+
+    }
+
 }
