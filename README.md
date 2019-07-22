@@ -1,6 +1,9 @@
 # ajou-dirtycode
 ## Dirty code for refactoring 과정
-이 코드는 크게 세 부분으로 나뉜다. 
+
+가장 먼저 테스트 코드들을 작성하였고 코드를 수정할 때마다 테스트를 실행하였다.
+
+코드는 크게 세 부분으로 나뉜다. 
 
             if (!items[i].name.equals("Aged Brie") ...
 	    
