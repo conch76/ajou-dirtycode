@@ -30,20 +30,25 @@ class DirtySample {
                 item.sellIn = item.sellIn - 1;
             }
 
-            if (item.sellIn < 0) {
-                if (item.name.equals("Aged Brie")) {
+            if (item.name.equals("Aged Brie")) {
+                if (item.sellIn < 0) {
                     increaseOneItemQuality(item);
-                } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    item.quality = 0;
-                } else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                } else {
-                    decreaseOneItemQuality(item);
                 }
+            } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                if (item.sellIn < 0) {
+                    item.quality = 0;
+                }
+            } else if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            } else {
+                if (item.sellIn < 0) {
+                    decreaseOneItemQuality(item);
 
+                }
             }
-
         }
+
     }
+
 
 
 
