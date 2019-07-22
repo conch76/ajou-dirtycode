@@ -60,9 +60,11 @@ class DirtySample {
                     // invert 5
                     if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.quality > 0) {
-                            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                            // invert 6
+                            if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
                                 decreaseItemQuality(item);
                             }
+                            // invert 6
                         }
                     }
                     // invert 5 end
