@@ -203,16 +203,32 @@ if (item.sellIn < 0) {
 3) `sellIn < 0` && `quality > 0` -> **quality 1 감소**
 
 <hr/>
-## 테스트 method 구현하기
+## test method 구현하기
 
-위에서 name은 크게 4가지로 나뉜다는 점을 다시 한 번 상기하자. <br>
-그러므로 크게 4가지의 상황에서 quality와 sellIn의 값이 어떻게 변하는지 
+위에서 name은 크게 4가지로 나뉜다는 점을 다시 한 번 상기하자. test method의 이름과 method 내 코드에서는 4가지 아이템을 앞글자를 따서 간소화하여 표현하였다. 
+
+``` java
+private static final String A = "Aged Brie";
+private static final String B = "Backstage passes to a TAFKAL80ETC concert";
+private static final String S = "Sulfuras, Hand of Ragnaros";
+private static final String E = "else..";
+```
+
+앞서 크게 나눴던 4가지의 상황에서 quality와 sellIn의 값이 어떻게 변하는지 
 hamcrest의 assertThat을 이용하여 확인해보면서 테스트 코드를 작성 하였다.    
 
 <hr/>
 ## Refactoring
 
 ### 1. 복잡한 코드의 간소화
+
+4가지 아이템을 앞글자를 따서 간소화하여 표현하였다. 
+
+```java
+private static final String AGED_BRIE = "Aged Brie";
+private static final String BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
+private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+```
 
 #### foreach
 가독성을 높이기 위해 for 문을 인덱스 형식 `for(int i=0; i<items.size();i++)` 에서 배열의 모든 요소를 출력하는 **향상된 for문 형식** `for(Item item : items)`으로 변경했다.
