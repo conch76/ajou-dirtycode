@@ -69,6 +69,16 @@ public class DirtySampleTest {
         assertThat(items[0].quality, is(42));
     }
 
+    //sellIn이 0보다 작고 이름이 Backstage이면 퀄리티는 0이 되어야한다.
+    @Test
+    public void 이름이_Backstage이고_sellIn이_0보다_작으면_퀄리티는_0(){
+        Item[] items = {new Item(TAFKAL80ETC,-1,40)};
+        DirtySample dirtySample = new DirtySample(items);
+        dirtySample.updateQuality();
+        assertThat(items[0].quality, is(0));
+    }
+
+
     @Test
     public void doSomething_이름이셋다아니고_sellIn이음수이고_quailty가음수일때() {
         Item[] items = {new Item(NONE_OF_THREE_NAMES, -5, -5)};
