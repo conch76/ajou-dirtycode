@@ -2,6 +2,7 @@ package ac.kr.ajou.dirt;
 
 import org.junit.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -30,6 +31,15 @@ public class DirtySampleTest {
         DirtySample dirtySample = new DirtySample(items);
         dirtySample.updateQuality();
         assertThat(items[0].quality, is(41));
+    }
+
+    //이름이 TAFKAL80ETC이고 sellIn<11 && quality<50이면 quality는 2만큼 증가해야한다.
+    @Test
+    public void 이름이_Backstage이고_sellIn이_10이고_quality가_40이면_quality는_42이어야함(){
+        Item[] items = {new Item(TAFKAL80ETC,10,40)};
+        DirtySample dirtySample = new DirtySample(items);
+        dirtySample.updateQuality();
+        assertThat(items[0].quality, is(42));
     }
 
     @Test
