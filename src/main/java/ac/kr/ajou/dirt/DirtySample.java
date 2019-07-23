@@ -9,47 +9,19 @@ class DirtySample {
 
     public void update_quality() {
         for (int i = 0; i < items.length; i++) {
-            if (!items[i].name.equals("Aged Brie")
-                    && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (items[i].quality > 0) {
-                    if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                        items[i].quality = items[i].quality - 1;
-                    }
-                }
-            } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
-
-                    if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
-
-                        if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                items[i].sellIn = items[i].sellIn - 1;
-            }
-
+            ItemNameIsNotAllOfTheCaseAndQualityOverZero(i);
+            NameIsAgedOrBackageAndQualityLessThan50(i);
+            NameIsBackageAndQualityLessThan50(i);
+            NameIsNotSulfuras(i);
             if (items[i].sellIn < 0) {
-
-                ItemNameIsNotAllOfTheCase(i);
+                ItemNameIsNotAllOfTheCaseAndQualityOverZero(i);
                 ItemNameIsBackageTButNotAgedBrie(i);
                 NameisAgedBrie(i);
-
             }
         }
     }
-    private void ItemNameIsNotAllOfTheCase(int i) {
+
+    private void ItemNameIsNotAllOfTheCaseAndQualityOverZero(int i) {
         if (!items[i].name.equals("Aged Brie")) {
             if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (items[i].quality > 0) {
@@ -61,7 +33,8 @@ class DirtySample {
         }
 
     }
-    private void ItemNameIsBackageTButNotAgedBrie(int i){
+
+    private void ItemNameIsBackageTButNotAgedBrie(int i) {
         if (!items[i].name.equals("Aged Brie")) {
 
             if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
@@ -69,14 +42,48 @@ class DirtySample {
             }
         }
     }
-    private void NameisAgedBrie(int i){
-        if (items[i].name.equals("Aged Brie")){
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
+
+    private void NameisAgedBrie(int i) {
+        if (items[i].name.equals("Aged Brie")) {
+            if (items[i].quality < 50) {
+                items[i].quality = items[i].quality + 1;
+            }
+        }
+
+    }
+    private void NameIsNotAgedBrieNotBackageT(int i){//중복코드
+        if (!items[i].name.equals("Aged Brie")
+                && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            if (items[i].quality > 0) {
+                if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
+                    items[i].quality = items[i].quality - 1;
                 }
             }
-
         }
+    }
+    private void NameIsAgedOrBackageAndQualityLessThan50(int i) {
+        if (!((!items[i].name.equals("Aged Brie")
+                && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")))) {
+            if (items[i].quality < 50)
+                items[i].quality = items[i].quality + 1;
+        }
+    }
+    private void NameIsBackageAndQualityLessThan50(int i){
+
+            if(items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")){
+                if (items[i].quality < 50){
+                    if (items[i].sellIn < 11)
+                        items[i].quality = items[i].quality + 1;
+                    if(items[i].sellIn < 6)
+                        items[i].quality = items[i].quality + 1;
+                }
+            }
+    }
+    private void NameIsNotSulfuras(int i){
+        items[i].sellIn = items[i].sellIn - 1;
+    }
+
+
 
 
 
