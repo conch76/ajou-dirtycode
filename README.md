@@ -17,7 +17,7 @@ Dirty code for refactoring
 - `int quality`
 - `toString()`
 
-###updateQuality() 분석 (rough ver.)
+### updateQuality() 분석 (rough ver.)
 
   - `items` 리스트의 처음부터 끝까지 모든 `item` 에 대해
     - `item` 의 이름이 `Aged Brie` , `Backstage passes to a TAFKAL80ETC concert` 이 아니고
