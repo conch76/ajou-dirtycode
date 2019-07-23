@@ -23,6 +23,14 @@ public class DirtySampleTest {
         assertThat(items[0].quality,is(0));
     }
 
+    //이름이 AGED_BRIE이고 퀄리티가 50보다 작으면 퀄리티는 1만큼 증가해야한다.
+    @Test
+    public void 이름이_AgedBrie이고_퀄리티는_40이면_퀄리티는_41이어야함(){
+        Item[] items = {new Item(AGED_BRIE,10,40)};
+        DirtySample dirtySample = new DirtySample(items);
+        dirtySample.updateQuality();
+        assertThat(items[0].quality, is(41));
+    }
 
     @Test
     public void doSomething_이름이셋다아니고_sellIn이음수이고_quailty가음수일때() {
