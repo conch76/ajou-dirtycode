@@ -42,6 +42,15 @@ public class DirtySampleTest {
         assertThat(items[0].quality, is(42));
     }
 
+    //이름이 TAFKAL80ETC이고 sellIn<6 && quality<50이면 quality는 3 증가해야한다.
+    @Test
+    public void 이름이_Backstage이고_sellIn이_5이고_quality가_40이면_quality는_43이어야함(){
+        Item[] items = {new Item(TAFKAL80ETC,5,40)};
+        DirtySample dirtySample = new DirtySample(items);
+        dirtySample.updateQuality();
+        assertThat(items[0].quality, is(43));
+    }
+
     @Test
     public void doSomething_이름이셋다아니고_sellIn이음수이고_quailty가음수일때() {
         Item[] items = {new Item(NONE_OF_THREE_NAMES, -5, -5)};
