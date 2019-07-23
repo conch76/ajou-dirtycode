@@ -37,18 +37,21 @@ public class DirtySample {
                     items[i].quality = items[i].quality - 1;
             } //first if
 
-            if (items[i].sellIn < 0) {
-               if(items[i].name.equals("Aged Brie")){ //aged일때
-                    if (items[i].quality < 50)
-                        items[i].quality = items[i].quality + 1;
-                }
-               else if(items[i].name.equals("Backstage passes to a TAFKAL80ETC concert"))  //backstage
-                        items[i].quality = 0;
-               else{  //others
-                   if (items[i].quality > 0)
-                            items[i].quality = items[i].quality - 1;
-               }
-            } //third if
+
+           if(items[i].name.equals("Aged Brie")){ //aged일때
+               if (items[i].sellIn < 0)
+                 if (items[i].quality < 50)
+                    items[i].quality = items[i].quality + 1;
+            }
+           else if(items[i].name.equals("Backstage passes to a TAFKAL80ETC concert"))  //backstage
+               if (items[i].sellIn < 0)
+                    items[i].quality = 0;
+           else{  //others
+               if (items[i].sellIn < 0)
+                    if (items[i].quality > 0)
+                        items[i].quality = items[i].quality - 1;
+           }
+           //third if
 
         }//for
 
