@@ -13,6 +13,17 @@ public class DirtySampleTest {
     public static final String TAFKAL80ETC = "Backstage passes to a TAFKAL80ETC concert";
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
+
+    //이름이 AGED_BRIE , TAFKAL80ETC, SULFURAS 셋 다 아니고 퀄리티가 0보다 크면 퀄리티는 1만큼 감소해야한다.
+    @Test
+    public void 이름이_셋다_아니고_quailty가_1이면_0이_되어야함(){
+        Item[] items = {new Item(NONE_OF_THREE_NAMES, 0, 1)};
+        DirtySample dirtySample = new DirtySample(items);
+        dirtySample.updateQuality();
+        assertThat(items[0].quality,is(0));
+    }
+
+
     @Test
     public void doSomething_이름이셋다아니고_sellIn이음수이고_quailty가음수일때() {
         Item[] items = {new Item(NONE_OF_THREE_NAMES, -5, -5)};
