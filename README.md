@@ -63,7 +63,7 @@ Dirty code for refactoring
               - `quality` 를 1 감소
           - `quality` 가 0이하인 경우
      - `sellIn` 을 1 감소
-   - 이름이 `Aged Brie`인 경우
+- 이름이 `Aged Brie`인 경우
      - `sellIn` 이 0이하인 경우
           - `quality` 가 49보다 작은 경우 
               - `quality` 를 2 증가
@@ -75,7 +75,7 @@ Dirty code for refactoring
           - `quality` 가 50보다 작은 경우
               - `quality` 는 1 증가
      - `sellIn` 을 1 감소
-   - 이름이 `Backstage passes to a TAFKAL80ETC concert`인 경우
+- 이름이 `Backstage passes to a TAFKAL80ETC concert`인 경우
      - `sellIn` 이 11이상인 경우
           - `quality` 가 50보다 작은 경우
               - `quality` 를 1 증가
