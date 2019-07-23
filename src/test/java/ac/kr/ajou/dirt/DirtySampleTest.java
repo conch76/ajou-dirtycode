@@ -78,6 +78,17 @@ public class DirtySampleTest {
         assertThat(items[0].quality, is(0));
     }
 
+    //이름이 셋 다 해당되지 않고 sellIn이 0보다 작고
+    // 퀄리티가 0보다 크면 퀄리티는 2 감소해야한다.
+    @Test
+    public void 이름이_셋다아니고_sellIn인_0보다_작고_퀄리티가_30이면_29되어야함(){
+        Item[] items = {new Item(NONE_OF_THREE_NAMES,-1,30)};
+        DirtySample dirtySample = new DirtySample(items);
+        dirtySample.updateQuality();
+        assertThat(items[0].quality, is(28));
+    }
+
+
 
     @Test
     public void doSomething_이름이셋다아니고_sellIn이음수이고_quailty가음수일때() {
