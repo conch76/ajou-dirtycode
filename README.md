@@ -54,7 +54,7 @@ Dirty code for refactoring
 ### updateQuality() 분석 (simple ver.)
 
 - 이름이 3가지 case가 아닌 경우
-     - `sellIn` 이 0과 같거나 작은 경우
+     - `sellIn` 이 0이하인 경우
           - `quality` 가 2이상인 경우
               - `quality` 를 2 감소
           - `quality` 가 0이하인 경우
