@@ -7,65 +7,73 @@ public class DirtySample {
         this.items = items;
     }
 
-    //이름 구분을 Aged, Backstage, Sulfuras, Others로 한다.
+
     public void updateQuality() {
 
-        for ( int i = 0; i < items.length; i++) {
+        for (int i = 0; i < items.length; i++) {
 
-            if(items[i].name.equals("Sulfuras, Hand of Ragnaros")) //sulfuras
+            if(isSulfuras_HandOfRagnaros(items[i], "Sulfuras, Hand of Ragnaros"))
                 continue;
 
             MinusItemSellIn(i);
 
-            ItemNameIsAgedBrie(i);
-
-            BackStagePassesToATAFKAL80ETCConcert(i);
-
-            ELSE(i);
-
-        }//for
-
-    }
-/*
-    private void ItemNameIsSurfuras_HandOfRagnaros(int i){
-        if(items[i].name.equals("Sulfuras, Hand of Ragnaros")) //sulfuras
-            continue;
-    }
-*/
-
-    private void ItemNameIsAgedBrie(int i){
-        if ( items[i].name.equals("Aged Brie") ) { //aged
-            if (items[i].quality < 50) {
-                PlusItemQuality(i);
+            if (isAgedbrie(items[i], "Aged Brie")) {
+                updateQualityWhenIsAgedbrie(i);
             }
-            if (items[i].sellIn < 0 && items[i].quality < 50)
-                PlusItemQuality(i);
-        }
-    }
-
-    private void BackStagePassesToATAFKAL80ETCConcert(int i){
-        if( items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")){ //backstage
-            if (items[i].quality < 50) {
-                PlusItemQuality(i);
-                if (items[i].sellIn < 11 && items[i].quality < 50) {
-                    PlusItemQuality(i);
-                }
-                if (items[i].sellIn < 6 && items[i].quality < 50) {
-                    PlusItemQuality(i);
-                }
+            else if(isBackstagePassesToATAFKAL80ETCConcert(items[i], "Backstage passes to a TAFKAL80ETC concert")){
+                updateQualityWhenIsBackstagePassesToATAFKAL80ETCConcert(i);
             }
-            if (items[i].sellIn < 0)
-                items[i].quality = 0;
+            else{
+                updateQualityWhenIsNeither(i);
+            }
+
         }
+
     }
 
-    private void ELSE(int i){
+
+    private void updateQualityWhenIsNeither(int i) {
         if (items[i].quality > 0 ) {
             MinusItemQuality(i);
         }
         if (items[i].sellIn < 0 && items[i].quality > 0)
             MinusItemQuality(i);
     }
+
+    private void updateQualityWhenIsBackstagePassesToATAFKAL80ETCConcert(int i) {
+        if (items[i].quality < 50) {
+            PlusItemQuality(i);
+            if (items[i].sellIn < 11 && items[i].quality < 50) {
+                PlusItemQuality(i);
+            }
+            if (items[i].sellIn < 6 && items[i].quality < 50) {
+                PlusItemQuality(i);
+            }
+        }
+        if (items[i].sellIn < 0)
+            items[i].quality = 0;
+    }
+
+    private void updateQualityWhenIsAgedbrie(int i) {
+        if (items[i].quality < 50) {
+            PlusItemQuality(i);
+        }
+        if (items[i].sellIn < 0 && items[i].quality < 50)
+            PlusItemQuality(i);
+    }
+
+    private boolean isBackstagePassesToATAFKAL80ETCConcert(Item item, String s) {
+        return item.name.equals(s);
+    }
+
+    private boolean isSulfuras_HandOfRagnaros(Item item, String s) {
+        return item.name.equals(s);
+    }
+
+    private boolean isAgedbrie(Item item, String s) {
+        return item.name.equals(s);
+    }
+
 
     private void MinusItemSellIn(int i) {
         items[i].sellIn = items[i].sellIn - 1;
