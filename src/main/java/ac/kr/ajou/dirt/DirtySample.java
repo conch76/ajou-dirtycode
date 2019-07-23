@@ -10,12 +10,8 @@ public class DirtySample {
     //이름 구분을 Aged, Backstage, Sulfuras, Others로 한다.
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            if (!items[i].name.equals("Aged Brie") && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (items[i].quality > 0 && !items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                    items[i].quality = items[i].quality - 1;
-                }
-            }
-            else {
+
+            if ( items[i].name.equals("Aged Brie") || items[i].name.equals("Backstage passes to a TAFKAL80ETC concert") ) { //aged or backstage
                 if (items[i].quality < 50) {
                     items[i].quality = items[i].quality + 1;
 
@@ -28,7 +24,13 @@ public class DirtySample {
                         }
                     }
                 }
+            }
+            else { //sulfuras or others
+                if (items[i].quality > 0 && !items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
+                    items[i].quality = items[i].quality - 1;
+                }
             } //first if
+
 
             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
                 items[i].sellIn = items[i].sellIn - 1;
@@ -42,12 +44,11 @@ public class DirtySample {
                 }
                else if(items[i].name.equals("Backstage passes to a TAFKAL80ETC concert"))  //backstage
                         items[i].quality = 0;
-               else {
-                   if(items[i].name.equals("Sulfuras, Hand of Ragnaros")) //sulfuras
+               else if(items[i].name.equals("Sulfuras, Hand of Ragnaros")) //sulfuras
                        continue;
-                   else if (items[i].quality > 0) { //others
+               else{  //others
+                   if (items[i].quality > 0)
                             items[i].quality = items[i].quality - 1;
-                   }
                }
             } //third if
 
