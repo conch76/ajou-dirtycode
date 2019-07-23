@@ -88,7 +88,7 @@ public class DirtySampleTest {
         assertThat(items[0].quality, is(28));
     }
 
-
+////////////////////////////////////////////////////////////////////////////
 
     @Test
     public void doSomething_이름이셋다아니고_sellIn이음수이고_quailty가음수일때() {
