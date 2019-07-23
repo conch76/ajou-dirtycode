@@ -36,8 +36,10 @@ public class DirtySample {
                     }
                 }
             }
-            else { //sulfuras or others
-                if (items[i].quality > 0 && !items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
+            else if(items[i].name.equals("Sulfuras, Hand of Ragnaros")) //sulfuras
+                    continue;
+            else{
+                if (items[i].quality > 0 ) {
                     items[i].quality = items[i].quality - 1;
                 }
             } //first if
