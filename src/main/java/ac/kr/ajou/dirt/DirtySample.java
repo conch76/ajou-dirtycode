@@ -40,17 +40,15 @@ public class DirtySample {
                         items[i].quality = items[i].quality + 1;
                     }
                 }
-                else{
-                    if(items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) { //backstage
+               else if(items[i].name.equals("Backstage passes to a TAFKAL80ETC concert"))  //backstage
                         items[i].quality = 0;
-                    }
-                    else { //sulfuras or others
-                        if (items[i].quality > 0 && !items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
+               else {
+                   if(items[i].name.equals("Sulfuras, Hand of Ragnaros")) //sulfuras
+                       continue;
+                   else if (items[i].quality > 0) { //others
                             items[i].quality = items[i].quality - 1;
-                        }
-                    }
-                }
-
+                   }
+               }
             } //third if
 
         }//for
