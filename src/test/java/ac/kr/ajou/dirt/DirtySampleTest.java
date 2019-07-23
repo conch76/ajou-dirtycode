@@ -51,6 +51,15 @@ public class DirtySampleTest {
         assertThat(items[0].quality, is(43));
     }
 
+    //이름이 sulfuras가 아니면 sellIn은 1 감소 해야한다.
+    @Test
+    public void 이름이_sulfuras가_아니고_sellIn이_5이면_sellIn은_4이어야함(){
+        Item[] items = {new Item(TAFKAL80ETC,5,40)};
+        DirtySample dirtySample = new DirtySample(items);
+        dirtySample.updateQuality();
+        assertThat(items[0].sellIn, is(4));
+    }
+
     @Test
     public void doSomething_이름이셋다아니고_sellIn이음수이고_quailty가음수일때() {
         Item[] items = {new Item(NONE_OF_THREE_NAMES, -5, -5)};
