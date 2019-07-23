@@ -10,13 +10,26 @@ public class DirtySampleTest {
 
     // Name
     String BackStage = "Backstage passes to a TAFKAL80ETC concert";
-
+    String Aged = "Aged Brie";
     // Loop
     int loopFifty = 50;
 
     // Quality
     int definedQualityMax = 50;
     int definedQualityMin = 0;
+    int sellInOver1=5;
+    int qualityUnder50=40;
+    int qualityOver50=51;
+    int negativeSellIn=-1;
+
+    @Test
+    public void 아이템_이름이_Aged이고_quality가50미만_Sellin이1이상일때_quality1증가_Sellin1감소_아니면에러(){
+        Item[] items = makeNewItemLists(qualityUnder50,sellInOver1,Aged);
+        DirtySample dirtySample = DirtySample.builder().items(items).build();
+        dirtySample.updateQuality();
+        assertThat(items[0].getQuality(), is(qualityUnder50+1));
+        assertThat(items[0].getSellIn(), is(sellInOver1-1));
+    }
 
     @Test
     public void 아이템_이름이_Backstage이고_quality가50보다작고_Sellin이11보다클때_50번반복() {
