@@ -21,17 +21,12 @@
   ```
     
 		
-3. for 문 안에 있는 4가지 if, else, if, if문 안에 있는 내용들을 메소드로 추출해주었습니다
+3. for 문 안에 있는 4가지 if, else, if, if문 안에 있는 내용들을 if,if 로 줄이고, 메소드로 추출해주었습니다
 
  ```
 for (Item item : items) {
-            if (!isAged_brie(item)  && !isBackstage(item)) {
-                QualitySufficientAndNotSulfuras(item);
-            }
 
-            else {
-                QualityLowerThan50(item);
-            }
+            ChecktheName(item);
 
             if (!isSulfuras(item)) {
                 SellInDown_1(item);
@@ -61,17 +56,7 @@ for (Item item : items) {
 
     private void BackstageCase(Item item) {
         if (isBackstage(item)) {
-            if (item.sellIn < 11) {
-                if (item.quality < 50) {
-                    QualityUp_1(item);
-                }
-            }
-
-            if (item.sellIn < 6) {
-                if (item.quality < 50) {
-                    QualityUp_1(item);
-                }
-            }
+                    QualityUp_BySellIn(item);
         }
     } 
  ```
@@ -84,8 +69,32 @@ for (Item item : items) {
         }
             
     >>>>>
-    
-    if (item.sellIn < 11 && item.quality < 50){ 
-         QualityUp_1(item);    
+
+    if (item.sellIn < 11 && item.quality < 50){
+         QualityUp_1(item);
         }
+```
+
+7. 중복되는 코드는 파라미터 값을 달리해서 새 메소드로 추출했습니다
+```
+    if (item.sellIn < 11 && item.quality < 50){
+         QualityUp_1(item);
+    }
+
+    if (item.sellIn < 6 && item.quality < 50){
+         QualityUp_1(item);
+    }
+
+    >>>>>
+
+    private void QualityUp_BySellIn(Item item) {
+            QualityUp_with_Sellln_amount(item, 11);
+            QualityUp_with_Sellln_amount(item, 6);
+    }
+
+     private void QualityUp_with_Sellln_amount(Item item, int i) {
+        if (item.sellIn < i && item.quality < 50) {
+            QualityUp_1(item);
+        }
+     }
 ```
