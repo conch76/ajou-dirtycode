@@ -83,5 +83,7 @@ decreaseItemQuality함수로 빼기
 
 17. 첫번째와 세번째 두 비교문을 합치기
 
+18.            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) { item.sellIn -= 1; }
 
+위 조건은 Quality가 아니라 SellIn을 수정하는 것이므로 if문과 합치지 않고 따로 둔다. 
 
