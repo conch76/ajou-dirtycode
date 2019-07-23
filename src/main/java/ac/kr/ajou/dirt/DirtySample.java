@@ -7,16 +7,19 @@ public class DirtySample {
         this.items = items;
     }
 
-    //코드 의도 파악 -> 테스트를 만들어라 -> refactoring해라 -> refactoring 과정 작성..
+    //이름 구분을 Aged, Backstage, Sulfuras, Others로 한다.
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            if (!items[i].name.equals("Aged Brie") && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                Quality가0보다크고_Sulfuras가아니라면_퀄리티1감소(items, i);
-            }
-            else {
+
+            if (items[i].name.equals("Aged Brie") && items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")){
                 Quality가50보다작으면_퀄리티1증가후_Backstage판단(items, i);
             }
-            Sulfras가아니면_SellIn이1감소(items, i);
+            else {
+                Quality가0보다크고_Sulfuras가아니라면_퀄리티1감소(items, i); //others라면
+            }
+
+            Sulfras가아니면_SellIn이1감소(items, i); //Aged or Backstage or others라면
+
             SellIn이_0이하라면(items, i);
         }
     }
