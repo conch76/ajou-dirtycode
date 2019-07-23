@@ -41,6 +41,15 @@ public class DirtySampleTest {
     }
 
     @Test
+    public void 아이템_이름이_Aged고_quality가50미만_SellIn이음수일때_quality2증가_혹은50으로셋_그리고SellIn1감소_아니면에러(){
+        Item[] items = makeNewItemLists(qualityUnder50,negativeSellIn,Aged);
+        DirtySample dirtySample = DirtySample.builder().items(items).build();
+        dirtySample.updateQuality();
+        assertThat(items[0].getQuality(), anyOf(is(qualityUnder50+2),is(50)));
+        assertThat(items[0].getSellIn(), is(negativeSellIn-1));
+    }
+
+    @Test
     public void 아이템_이름이_Backstage이고_quality가50보다작고_Sellin이11보다클때_50번반복() {
         int initialQuality = 40;
         int initialSellin = 20;
