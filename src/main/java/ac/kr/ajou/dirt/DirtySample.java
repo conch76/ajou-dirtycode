@@ -1,6 +1,7 @@
 package ac.kr.ajou.dirt;
 
-class DirtySample {
+//code made by : 김수영&전혜진
+public class DirtySample {
     Item[] items;
 
     public DirtySample(Item[] items) {
@@ -8,55 +9,104 @@ class DirtySample {
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
-            if (!items[i].name.equals("Aged Brie")
-                    && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (items[i].quality > 0) {
-                    if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                        items[i].quality = items[i].quality - 1;
-                    }
-                }
-            } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
+        for (Item item : items) {
 
-                    if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
+            ChecktheName(item);
 
-                        if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
-                    }
-                }
+            if (!isSulfuras(item)) {
+                SellInDown_1(item);
             }
 
-            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                items[i].sellIn = items[i].sellIn - 1;
-            }
-
-            if (items[i].sellIn < 0) {
-                if (!items[i].name.equals("Aged Brie")) {
-                    if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].quality > 0) {
-                            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                                items[i].quality = items[i].quality - 1;
-                            }
-                        }
-                    } else {
-                        items[i].quality = items[i].quality - items[i].quality;
-                    }
-                } else {
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
-                    }
-                }
+            if (item.sellIn < 0) {
+                SellInLowerThanZero(item);
             }
         }
     }
+
+    private void ChecktheName(Item item) {
+
+        if (!isAged_brie(item) && !isBackstage(item)) {
+            QualitySufficientAndNotSulfuras(item);
+        }
+        else {
+            QualityLowerThan50(item);
+        }
+    }
+
+    private void QualitySufficientAndNotSulfuras(Item item) {
+        if (item.quality > 0 && !isSulfuras(item)) {
+            QualityDown_1(item);
+        }
+    }
+
+    private void SellInLowerThanZero(Item item) {
+        if (!isAged_brie(item)) {
+            NotAgedBrieCase(item);
+        }
+
+        else {
+            if (item.quality < 50) {
+                QualityUp_1(item);
+            }
+        }
+    }
+
+    private void NotAgedBrieCase(Item item) {
+        if (!isBackstage(item))
+        {
+            QualitySufficientAndNotSulfuras(item);
+        }
+        else {
+            item.quality = 0;
+        }
+    }
+
+    private void QualityLowerThan50(Item item) {
+        if (item.quality < 50) {
+            QualityUp_1(item);
+            BackstageCase(item);
+        }
+    }
+
+    private void BackstageCase(Item item) {
+        if (isBackstage(item)) {
+            QualityUp_BySellIn(item);
+        }
+    }
+
+    private void QualityUp_BySellIn(Item item) {
+        QualityUp_with_Sellln_amount(item, 11);
+        QualityUp_with_Sellln_amount(item, 6);
+    }
+
+    private void QualityUp_with_Sellln_amount(Item item, int i) {
+        if (item.sellIn < i && item.quality < 50) {
+            QualityUp_1(item);
+        }
+    }
+
+    private void QualityUp_1(Item item) {
+        item.quality = item.quality + 1;
+    }
+
+    private void QualityDown_1(Item item) {
+        item.quality = item.quality - 1;
+    }
+
+    private void SellInDown_1(Item item) {
+        item.sellIn = item.sellIn - 1;
+    }
+
+    private boolean isSulfuras(Item item) {
+        return item.name.equals("Sulfuras, Hand of Ragnaros");
+    }
+
+    private boolean isBackstage(Item item) {
+        return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
+    }
+
+    private boolean isAged_brie(Item item) {
+        return item.name.equals("Aged Brie");
+    }
+
 }
