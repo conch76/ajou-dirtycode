@@ -54,45 +54,53 @@ Dirty code for refactoring
 ### updateQuality() 분석 (simple ver.)
 
 - 이름이 3가지 case가 아닌 경우
-     - `sellIn` 이 0이하인 경우
-          - `quality` 가 2이상인 경우
-              - `quality` 를 2 감소
-          - `quality` 가 0이하인 경우
      - `sellIn` 이 0보다 큰 경우
           - `quality` 가 0보다 큰 경우
               - `quality` 를 1 감소
           - `quality` 가 0이하인 경우
+              - `quality` 는 그대로
+     - `sellIn` 이 0이하인 경우
+          - `quality` 가 2이상인 경우
+              - `quality` 를 2 감소
+          - `quality` 가 1인 경우
+              - `quality` = 0
+          - `quality` 가 0이하인 경우
+              - `quality`는 그대로
      - `sellIn` 을 1 감소
 - 이름이 `Aged Brie`인 경우
-     - `sellIn` 이 0이하인 경우
-          - `quality` 가 49보다 작은 경우 
-              - `quality` 를 2 증가
-          - `quality` 가 49인 경우
-              - `quality`  = 50
+     - `sellIn` 이 0보다 큰 경우
           - `quality` 가 50이상인 경우
               - `quality` 는 그대로
-     - `sellIn` 이 0보다 큰 경우
           - `quality` 가 50보다 작은 경우
               - `quality` 는 1 증가
+     - `sellIn` 이 0이하인 경우
+          - `quality` 가 50이상인 경우
+              - `quality` 는 그대로
+          - `quality` 가 49인 경우
+              - `quality`  = 50
+          - `quality` 가 49보다 작은 경우 
+              - `quality` 를 2 증가
      - `sellIn` 을 1 감소
 - 이름이 `Backstage passes to a TAFKAL80ETC concert`인 경우
      - `sellIn` 이 11이상인 경우
+          - `quality` 가 50이상인 경우
+              - `quality` 는 그대로
           - `quality` 가 50보다 작은 경우
               - `quality` 를 1 증가
      - `sellIn` 이 6이상 이고 11보다 작은 경우
-          - `quality` 가 49보다 작은 경우
-              - `quality` 를 2 증가
+          - `quality` 가 50이상인 경우
+              - `quality` 는 그대로
           - `quality` 가 49인 경우 
               - `quality` = 50
+          - `quality` 가 49보다 작은 경우
+              - `quality` 를 2 증가
+     - `sellIn` 이 6보다 작고 0보다 큰 경우
           - `quality` 가 50이상인 경우
               - `quality` 는 그대로
-     - `sellIn` 이 6보다 작고 0보다 큰 경우
-          - `quality` 가 48보다 작은 경우
-              - `quality` 를 3 증가
           - `quality` 가 48, 49인 경우
               - `quality`  = 50
-          - `quality` 가 50이상인 경우
-              - `quality` 는 그대로
+          - `quality` 가 48보다 작은 경우
+              - `quality` 를 3 증가
      - `sellIn` 이 0이하인 경우 
           - `quality`  = 0 
      - `sellIn` 을 1 감소
