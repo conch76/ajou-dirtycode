@@ -71,9 +71,4 @@ class DirtySample {
             item.quality = item.quality - 1;
         }
     }
-
-    private boolean IfNameIsNotAgedBrieAndBackstage(Item item) {
-        return (!item.name.equals("Aged Brie") &&
-                !item.name.equals("Backstage passes to a TAFKAL80ETC concert"));
-    }
 }
