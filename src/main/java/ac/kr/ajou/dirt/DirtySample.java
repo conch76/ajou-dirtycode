@@ -14,12 +14,17 @@ class DirtySample {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (IfNameIsNotAgedBrieAndBackstage(item)) {
-                DoIfQualityIsPositiveAndNameIsNotSulfuras(item);
-            } else DoIfNameIsBackstageOrAged(item);
+            if (IfNameIsBackStageOrAged(item)) {
+                DoIfNameIsBackstageOrAged(item);
+            } else DoIfQualityIsPositiveAndNameIsNotSulfuras(item);
             ReduceSellInOneIfNameIsNotSulfuras(item);
             DoIfSellInIsNegative(item);
         }
+    }
+
+    private boolean IfNameIsBackStageOrAged(Item item){
+        return (item.name.equals("Aged Brie") ||
+                item.name.equals("Backstage passes to a TAFKAL80ETC concert"));
     }
 
 

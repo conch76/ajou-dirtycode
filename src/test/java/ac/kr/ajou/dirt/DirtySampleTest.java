@@ -43,7 +43,7 @@ public class DirtySampleTest {
     @Test
     public void 아이템이름이_세개_모두_아니고_item_Quality가_0이상이고_item_Sellin가_0이하일때_CHECK() {
         int satisfied_Quality = ((int) (Math.random() * definedQualityMax) + 1); // 0 ~ 50 난수
-        int satisfied_Sellin = ((int) (-Math.random() * definedQualityMax) + 1); //-50 ~ 0 난수
+        int satisfied_Sellin = ((int) (-Math.random() * definedQualityMax) - 1); //-50 ~ 0 난수
 
         Item[] satisfied_items = makeNewItemLists(satisfied_Quality, satisfied_Sellin, NotThreeDefault);
         DirtySample satisfied_dirtySample = DirtySample.builder().items(satisfied_items).build();
@@ -54,7 +54,7 @@ public class DirtySampleTest {
 
     @Test
     public void 아이템이름이_세개_모두_아니고_item_Quality가_0이하이고_item_Sellin가_0이상일때_CHECK() {
-        int satisfied_Quality = ((int) (-Math.random() * definedQualityMax) + 1); // -50~ 0 사이의 난수 생성
+        int satisfied_Quality = ((int) (-Math.random() * definedQualityMax) - 1); // -50~ 0 사이의 난수 생성
         int satisfied_Sellin = ((int) (Math.random() * definedQualityMax) + 1); // 1~ 50 사이의 난수 생성
 
         Item[] satisfied_items = makeNewItemLists(satisfied_Quality, satisfied_Sellin, NotThreeDefault);
