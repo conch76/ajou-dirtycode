@@ -12,78 +12,28 @@ class DirtySample {
 
     public void update_quality() {
         for (Item item : items) {
-//            if (!item.name.equals(AGED_BRIE)
-//                    && !item.name.equals(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT)) {
-//                if (item.quality > 0) {
-//                    if (!item.name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
-//                        item.quality = item.quality - 1;
-//                    }
-//                }
-//            } else {
-//                if (item.quality < 50) {
-//                    item.quality = item.quality + 1;
-//
-//                    if (item.name.equals(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT)) {
-//                        if (item.sellIn < 11) {
-//                            if (item.quality < 50) {
-//                                item.quality = item.quality + 1;
-//                            }
-//                        }
-//
-//                        if (item.sellIn < 6) {
-//                            if (item.quality < 50) {
-//                                item.quality = item.quality + 1;
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//
-//            if (!item.name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
-//                item.sellIn = item.sellIn - 1;
-//            }
-//
-//            if (item.sellIn < 0) {
-//                if (!item.name.equals(AGED_BRIE)) {
-//                    if (!item.name.equals(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT)) {
-//                        if (item.quality > 0) {
-//                            if (!item.name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
-//                                item.quality = item.quality - 1;
-//                            }
-//                        }
-//                    } else {
-//                        item.quality = 0;
-//                    }
-//                } else {
-//                    if (item.quality < 50) {
-//                        item.quality = item.quality + 1;
-//                    }
-//                }
-//            }
+            if (is_item_name_equal_test(item, SULFURAS_HAND_OF_RAGNAROS)) {
 
-
-            if (item.name.equals(SULFURAS_HAND_OF_RAGNAROS)) {
-
-            } else if (item.name.equals(BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT)) {
+            } else if (is_item_name_equal_test(item, BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT)) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
-                    if (item.sellIn < 11) {
+                    if (item_Sellln_Is_Under_Number(11,  item)) {
                         item.quality = item.quality + 1;
                     }
-                    if (item.sellIn < 6) {
+                    if (item_Sellln_Is_Under_Number(6, item)) {
                         item.quality = item.quality + 1;
                     }
                 }
                 item.sellIn = item.sellIn - 1;
-                if (item.sellIn < 0) {
+                if (item_Sellln_Is_Under_Number(0, item)) {
                     item.quality = 0;
                 }
-            } else if (item.name.equals(AGED_BRIE)) {
+            } else if (is_item_name_equal_test(item, AGED_BRIE)) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
                 }
                 item.sellIn = item.sellIn - 1;
-                if (item.sellIn < 0) {
+                if (item_Sellln_Is_Under_Number(0, item)) {
                     if (item.quality < 50) {
                         item.quality = item.quality + 1;
                     }
@@ -93,12 +43,21 @@ class DirtySample {
                     item.quality = item.quality - 1;
                 }
                 item.sellIn = item.sellIn - 1;
-                if (item.sellIn < 0) {
+                if (item_Sellln_Is_Under_Number(0, item)) {
                     if (item.quality > 0) {
                         item.quality = item.quality - 1;
                     }
                 }
             }
         }
+    }
+
+    private boolean is_item_name_equal_test(Item item, String sulfurasHandOfRagnaros) {
+        return item.name.equals(sulfurasHandOfRagnaros);
+    }
+    private boolean item_Sellln_Is_Under_Number(int number, Item item) {
+        if (item.sellIn < number)
+            return true;
+        return false;
     }
 }
