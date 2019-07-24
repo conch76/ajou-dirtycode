@@ -20,10 +20,10 @@ public class DirtySampleTest {
     int definedQualityMax = 50;
     int definedQualityMin = 0;
 
-    int sellInOver1 = 5;
-    int qualityUnder50 = 40;
-    int qualityOver50 = 51;
-    int negativeSellIn = -1;
+    int sellInOver1 = ((int) (Math.random() * definedQualityMax) +1);
+    int qualityUnder50 = ((int) (Math.random() * 2 * definedQualityMax) - 51);
+    int qualityOver50 = ((int) (Math.random() * definedQualityMax) + 50);
+    int negativeSellIn = ((int) (Math.random()*-50)-1 );
 
     @Test
     public void 아이템이름이_세개_모두_아니고_item_Quality와Sellin_모두_1이상일때_CHECK() {
