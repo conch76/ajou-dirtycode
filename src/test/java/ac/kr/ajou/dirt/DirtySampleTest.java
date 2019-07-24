@@ -56,6 +56,19 @@ public class DirtySampleTest {
     }
 
     @Test
+    public void update_quality_Aged_Brie_has_negative_sellIn_and_quality_less_than_50(){
+        //quality: + 2, sellIn: - 1
+        Item[] items = new Item[1];
+        items[0] = new Item("Aged Brie", -3, 5);
+        DirtySample dirtySample = new DirtySample(items);
+        dirtySample.update_quality();
+
+        assertThat(items[0].quality, is(7));
+        assertThat(items[0].sellIn, is(-4));
+    }
+
+
+    @Test
     public void update_quality_TAFKAL80ETC_has_sellIn_between_0_and_6_and_quality_less_than_50(){
         //quality: + 3, sellIn: - 1
         Item[] items = new Item[1];
