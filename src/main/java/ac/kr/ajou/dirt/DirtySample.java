@@ -14,23 +14,43 @@ class DirtySample {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (IfNameIsBackStageOrAged(item)) {
-                DoIfNameIsBackstageOrAged(item);
-            } else DoIfQualityIsPositiveAndNameIsNotSulfuras(item);
-            ReduceSellInOneIfNameIsNotSulfuras(item);
+            doIfNameIsAgedBrie(item);
+            doIfNameIsBackstage(item);
+            doIfNameIsNot3Cases(item);
+        }
+    }
+
+    private void doIfNameIsNot3Cases(Item item) {
+        if (!item.isNamed3Cases()) {
+            doIfQualityIsPositive(item);
+            reduceSellInOne(item);
             if(item.sellIn<0) {
-                DoIfSellInIsNegative(item);
+                doIfSellInIsNegative(item);
             }
         }
     }
 
-    private boolean IfNameIsBackStageOrAged(Item item){
-        return (item.name.equals("Aged Brie") ||
-                item.name.equals("Backstage passes to a TAFKAL80ETC concert"));
+    private void doIfNameIsBackstage(Item item) {
+        if (item.isNamed("Backstage passes to a TAFKAL80ETC concert")) {
+            doIfNameIsBackstageOrAged(item);
+            reduceSellInOne(item);
+            if(item.sellIn<0) {
+                doIfSellInIsNegative(item);
+            }
+        }
     }
 
+    private void doIfNameIsAgedBrie(Item item) {
+        if (item.isNamed("Aged Brie")) {
+            doIfNameIsBackstageOrAged(item);
+            reduceSellInOne(item);
+            if(item.sellIn<0) {
+                doIfSellInIsNegative(item);
+            }
+        }
+    }
 
-    private void DoIfSellInIsNegative(Item item) {
+    private void doIfSellInIsNegative(Item item) {
         if (item.name.equals("Aged Brie")) {
             checkQualityUnderFiftyAndAddSome(item, 1);
         } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
@@ -40,13 +60,13 @@ class DirtySample {
         }
     }
 
-    private void ReduceSellInOneIfNameIsNotSulfuras(Item item) {
+    private void reduceSellInOne(Item item) {
         if(!item.name.equals("Sulfuras, Hand of Ragnaros")) {
             item.sellIn=item.sellIn-1;
         }
     }
 
-    private void DoIfNameIsBackstageOrAged(Item item) {
+    private void doIfNameIsBackstageOrAged(Item item) {
         if (isItemNameBackstageAndSellinIsUnderWhat(item, 6)) {
             checkQualityUnderFiftyAndAddSome(item, 3);
         } else if (isItemNameBackstageAndSellinIsUnderWhat(item, 11)) {
@@ -66,7 +86,7 @@ class DirtySample {
         return item.name.equals("Backstage passes to a TAFKAL80ETC concert") && item.sellIn < threshold;
     }
 
-    private void DoIfQualityIsPositiveAndNameIsNotSulfuras(Item item) {
+    private void doIfQualityIsPositive(Item item) {
         if(item.quality>0 && !item.name.equals("Sulfuras, Hand of Ragnaros")) {
             item.quality = item.quality - 1;
         }
