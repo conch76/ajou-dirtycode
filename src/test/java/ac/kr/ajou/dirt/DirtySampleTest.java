@@ -126,5 +126,16 @@ public class DirtySampleTest {
         assertThat(items[0].sellIn, is(-3));
     }
 
+    @Test
+    public void update_quality_Sulfuras_is_always_maintain_item_value(){
+        //quality: maintain, sellIn: maintain
+        Item[] items = new Item[1];
+        items[0] = new Item("Sulfuras, Hand of Ragnaros", -4, 55);
+        DirtySample dirtySample = new DirtySample(items);
+        dirtySample.update_quality();
+
+        assertThat(items[0].quality, is(55));
+        assertThat(items[0].sellIn, is(-4));
+    }
 
 }
